@@ -10,6 +10,12 @@ export class ApiError extends Error {
   }
 }
 
+/** Vrai si l'erreur est une réponse HTTP portant ce code de statut. */
+export function hasApiStatus(error: unknown, status: number): boolean {
+  return error instanceof ApiError && error.status === status;
+}
+
+/** Vrai si l'erreur est une réponse HTTP 404 (ressource inexistante). */
 export function isNotFoundError(error: unknown): boolean {
-  return error instanceof ApiError && error.status === 404;
+  return hasApiStatus(error, 404);
 }

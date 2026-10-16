@@ -313,3 +313,50 @@
 .cart-item__subtotal {
   font-weight: 700;
 }
+
+.header__button {
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.header__user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.header__avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--color-surface);
+}
+
+.alert {
+  padding: var(--space-sm) var(--space-md);
+  border-left: 4px solid var(--color-error);
+  background: var(--color-surface);
+  color: var(--color-error);
+}
+
+.form {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.form__field {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.form__field label {
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.field[aria-invalid='true'] {
+  border-color: var(--color-error);
+  border-style: dashed;
+}
