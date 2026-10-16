@@ -20,7 +20,6 @@ export function ProductCard({ product }: ProductCardProps) {
       />
       <div className="product-card__body">
         <h2 className="product-card__title">
-          {/* Le pseudo-élément ::after étend le lien à toute la carte */}
           <Link to={getProductPath(product.id)} className="product-card__link">
             {product.title}
           </Link>

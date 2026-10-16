@@ -10,3 +10,19 @@ export function formatRating(rating: number): string {
 export function formatProductCount(count: number): string {
   return `${count} ${count > 1 ? 'produits' : 'produit'}`;
 }
+
+const discountFormatter = new Intl.NumberFormat('fr-FR', {
+  style: 'percent',
+  maximumFractionDigits: 0,
+});
+
+const dateFormatter = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' });
+
+/** On affiche la remise en pourcentage négatif */
+export function formatDiscount(discountPercentage: number): string {
+  return discountFormatter.format(-discountPercentage / 100);
+}
+
+export function formatDate(isoDate: string): string {
+  return dateFormatter.format(new Date(isoDate));
+}
