@@ -10,4 +10,6 @@
   --space-lg: 1.5rem;
   --radius: 0.5rem;
   --font: system-ui, sans-serif;
+  --color-surface: #f4f4f4;
+  --layout-max-width: 72rem;
 }
