@@ -3,6 +3,7 @@ import { formatDiscount } from '../utils/format';
 import { PriceTag } from './PriceTag';
 import { Rating } from './Rating';
 import { ReviewList } from './ReviewList';
+import { AddToCartButton } from './AddToCartButton';
 
 interface ProductDetailsProps {
   product: Product;
@@ -40,6 +41,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
             <span className="badge">{formatDiscount(product.discountPercentage)}</span>
           )}
         </p>
+        <AddToCartButton product={product} />
       </div>
 
       <section className="product-details__section" aria-labelledby="description-title">

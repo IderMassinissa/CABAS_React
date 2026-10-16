@@ -1,7 +1,11 @@
 import { Link, NavLink } from 'react-router';
 import { ROUTES } from '../constants/routes';
+import { useCartCount } from '../hooks/useCart';
+import { formatProductCount } from '../utils/format';
 
 export function Header() {
+  const cartCount = useCartCount();
+
   return (
     <header className="header">
       <div className="header__inner">
@@ -24,6 +28,10 @@ export function Header() {
             <li>
               <NavLink to={ROUTES.cart} className="header__link header__link--pill">
                 Panier
+                <span className="header__count" aria-hidden="true">
+                  {cartCount}
+                </span>
+                <span className="visually-hidden"> ({formatProductCount(cartCount)})</span>
               </NavLink>
             </li>
             <li>

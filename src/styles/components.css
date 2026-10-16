@@ -231,3 +231,85 @@
   color: var(--color-muted);
   font-size: 0.875rem;
 }
+
+.button--block {
+  width: 100%;
+}
+
+.header__count {
+  display: inline-block;
+  min-width: 1.25rem;
+  margin-left: 0.375rem;
+  padding: 0 0.375rem;
+  border-radius: 999px;
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.quantity-selector {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.quantity-selector__button {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.quantity-selector__button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.quantity-selector__value {
+  min-width: 2rem;
+  text-align: center;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: var(--space-sm) var(--space-md);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.cart-item__image {
+  width: 3.5rem;
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: var(--color-surface);
+}
+
+.cart-item__title {
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.cart-item__unit-price {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.cart-item__actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.cart-item__subtotal {
+  font-weight: 700;
+}

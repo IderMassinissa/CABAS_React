@@ -7,8 +7,16 @@ export function formatRating(rating: number): string {
   return ratingFormatter.format(rating);
 }
 
+function formatCount(count: number, singular: string, plural: string): string {
+  return `${count} ${count > 1 ? plural : singular}`;
+}
+
 export function formatProductCount(count: number): string {
-  return `${count} ${count > 1 ? 'produits' : 'produit'}`;
+  return formatCount(count, 'produit', 'produits');
+}
+
+export function formatItemCount(count: number): string {
+  return formatCount(count, 'article', 'articles');
 }
 
 const discountFormatter = new Intl.NumberFormat('fr-FR', {
