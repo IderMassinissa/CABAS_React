@@ -1,9 +1,10 @@
 import { useId, useState, type FormEvent } from 'react';
-import { Navigate, useNavigate } from 'react-router';
+import { Navigate, useLocation, useNavigate } from 'react-router';
 import { PageTitle } from '../components/PageTitle';
 import { ROUTES } from '../constants/routes';
 import { useAuth } from '../hooks/useAuth';
 import { hasApiStatus } from '../services/ApiError';
+import { getRedirectPath } from '../utils/redirect';
 
 const INVALID_CREDENTIALS_MESSAGE = 'Identifiants incorrects.';
 const NETWORK_ERROR_MESSAGE = 'Connexion impossible. Vérifiez votre connexion et réessayez.';
@@ -11,6 +12,10 @@ const NETWORK_ERROR_MESSAGE = 'Connexion impossible. Vérifiez votre connexion e
 export function LoginPage() {
   const { user, login } = useAuth();
   const navigate = useNavigate();
+
+  const location = useLocation();
+  // Page demandée avant la redirection vers /connexion, sinon le catalogue
+  const redirectTo = getRedirectPath(location.state) ?? ROUTES.catalog;
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -23,7 +28,7 @@ export function LoginPage() {
 
   // Déjà connecté
   if (user) {
-    return <Navigate to={ROUTES.catalog} replace />;
+    return <Navigate to={redirectTo} replace />;
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -33,7 +38,7 @@ export function LoginPage() {
 
     try {
       await login({ username: username.trim(), password });
-      void navigate(ROUTES.catalog, { replace: true });
+      void navigate(redirectTo, { replace: true });
     } catch (error) {
       setErrorMessage(
         hasApiStatus(error, 400) ? INVALID_CREDENTIALS_MESSAGE : NETWORK_ERROR_MESSAGE,
