@@ -1,6 +1,6 @@
-// IA-07
 import { Route, Routes } from 'react-router';
 import { Layout } from './components/Layout';
+import { ProtectedRoute } from './components/ProtectedRoute';
 import { ROUTES } from './constants/routes';
 import { CartPage } from './pages/CartPage';
 import { CatalogPage } from './pages/CatalogPage';
@@ -17,7 +17,9 @@ export function App() {
         <Route path={ROUTES.product} element={<ProductPage />} />
         <Route path={ROUTES.cart} element={<CartPage />} />
         <Route path={ROUTES.login} element={<LoginPage />} />
-        <Route path={ROUTES.newProduct} element={<NewProductPage />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path={ROUTES.newProduct} element={<NewProductPage />} />
+        </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

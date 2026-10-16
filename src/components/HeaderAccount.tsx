@@ -1,10 +1,20 @@
-import { NavLink } from 'react-router';
+import { NavLink, useLocation, useNavigate } from 'react-router';
 import { ROUTES } from '../constants/routes';
 import { useAuth } from '../hooks/useAuth';
 
 /** La partie « compte » de l'en-tête : il ny'a que ce composant qui dépend de l'authentification. */
 export function HeaderAccount() {
   const { user, logout } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    // Quitter la page protégée dans le même événement : un seul rendu, pas de détour par /connexion
+    if (location.pathname === ROUTES.newProduct) {
+      void navigate(ROUTES.catalog, { replace: true });
+    }
+    logout();
+  }
 
   if (!user) {
     return (
@@ -26,7 +36,7 @@ export function HeaderAccount() {
         <button
           type="button"
           className="header__link header__link--pill header__button"
-          onClick={logout}
+          onClick={handleLogout}
         >
           Se déconnecter
         </button>
