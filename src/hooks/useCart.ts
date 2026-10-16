@@ -1,4 +1,3 @@
-import { useContext, type Context } from 'react';
 import {
   CartActionsContext,
   CartCountContext,
@@ -6,14 +5,7 @@ import {
   type CartActions,
 } from '../context/cartContexts';
 import type { CartEntry } from '../types/cart';
-
-function useRequiredContext<T>(context: Context<T | null>, hookName: string): T {
-  const value = useContext(context);
-  if (value === null) {
-    throw new Error(`${hookName} must be used within a CartProvider`);
-  }
-  return value;
-}
+import { useRequiredContext } from './useRequiredContext';
 
 export function useCartEntries(): readonly CartEntry[] {
   return useRequiredContext(CartStateContext, 'useCartEntries');

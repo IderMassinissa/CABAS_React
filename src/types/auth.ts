@@ -13,3 +13,8 @@ export interface AuthUser {
 export interface LoginResponse extends AuthUser {
   accessToken: string;
 }
+
+export interface AuthSession {
+  user: AuthUser;
+  token: string;
+}

@@ -2,6 +2,7 @@ import { Link, NavLink } from 'react-router';
 import { ROUTES } from '../constants/routes';
 import { useCartCount } from '../hooks/useCart';
 import { formatProductCount } from '../utils/format';
+import { HeaderAccount } from './HeaderAccount';
 
 export function Header() {
   const cartCount = useCartCount();
@@ -34,11 +35,7 @@ export function Header() {
                 <span className="visually-hidden"> ({formatProductCount(cartCount)})</span>
               </NavLink>
             </li>
-            <li>
-              <NavLink to={ROUTES.login} className="header__link header__link--pill">
-                Se connecter
-              </NavLink>
-            </li>
+            <HeaderAccount />
           </ul>
         </nav>
       </div>
