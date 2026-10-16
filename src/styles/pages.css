@@ -94,3 +94,19 @@
     grid-column: 1 / -1;
   }
 }
+
+.cart {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.cart__summary {
+  color: var(--color-muted);
+}
+
+.cart__list {
+  display: grid;
+  gap: var(--space-md);
+  padding: 0;
+  list-style: none;
+}
